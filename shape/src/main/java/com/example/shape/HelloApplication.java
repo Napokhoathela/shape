@@ -26,6 +26,9 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(root, 600, 400);
         String cssPath = getClass().getResource("/styles.css").toExternalForm();
         scene.getStylesheets().add(cssPath);
+        root.getStyleClass().add("pane");
+        root.setStyle("-fx-background-color: #f0f0f0;");
+
 
         circle = new Circle(100, 200, 50);
         circle.setFill(colors[0]);
@@ -130,7 +133,16 @@ public class HelloApplication extends Application {
     }
 
     private void changeBackground() {
-        root.setStyle("-fx-background-color: #" + Integer.toHexString((int) (Math.random() * 0x1000000)));
+        for (int i = 0; i < colors.length; i++) {
+            colors[i] = Color.rgb((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256));
+        }
+        setShapeBackground(currentIndex);
+    }
+
+    private void setShapeBackground(int index) {
+        circle.setFill(colors[index]);
+        rectangle.setFill(colors[(index + 1) % 3]);
+        triangle.setFill(colors[(index + 2) % 3]);
     }
 
     public static void main(String[] args) {

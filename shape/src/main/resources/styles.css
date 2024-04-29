@@ -1,3 +1,10 @@
+/* styles.css
+/* styles.css */
+.pane {
+    -fx-background-color: #f0f0f0; /* Example background color */
+}
+
+
 .button {
     -fx-background-color: #4CAF50; /* Green */
     -fx-border: none;
